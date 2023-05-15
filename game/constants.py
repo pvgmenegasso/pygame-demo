@@ -17,18 +17,22 @@ FPS = 60
 
 TITLE: LiteralString = "TEST GAME"
 ICONTITLE: LiteralString = "TEST GAME ICONTITLE"
-AnyPath : TypeAlias = str | bytes
+AnyPath: TypeAlias = str | bytes
+
 
 class Transparency:
-
     __lowest_transparency = 1
     __max_transparency = 255
+
     @classmethod
     def n_transparent(cls, fraction: int):
-        result = int(255/fraction)
+        result = int(255 / fraction)
         if result < cls.__lowest_transparency or result > cls.__max_transparency:
-            raise ValueError(f"Your fraction would result in an Alpha {result}. which is greater than {cls.__max_transparency} or smaller than {cls.__lowest_transparency}. You did something wrong")
-        return int(255/fraction)
+            raise ValueError(
+                f"Your fraction would result in an Alpha {result}. which is greater than {cls.__max_transparency} or smaller than {cls.__lowest_transparency}. You did something wrong"
+            )
+        return int(255 / fraction)
+
 
 class MainThene:
     COLOR_BG = Color(20, 0, 20)
@@ -36,9 +40,9 @@ class MainThene:
     COLOR_ACCENT = Color(120, 30, 255)
     COLOR_TEXT = Color(255, 255, 255)
     COLOR_PANELS = Color(80, 20, 255)
-    BLACK = Color(0, 0, 0)         
-    WHITE = Color(255, 255, 255)   
-    GREY = Color(128, 128, 128)  
+    BLACK = Color(0, 0, 0)
+    WHITE = Color(255, 255, 255)
+    GREY = Color(128, 128, 128)
 
 
 DISPLAY = set_mode(SCREEN_SIZE)
