@@ -1,5 +1,5 @@
 from pytest import  fixture
-from spriteloader import MySprite
+from game.spriteloader import MySprite
 
 class SimpleTest:
 
