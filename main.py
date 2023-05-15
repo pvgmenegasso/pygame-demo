@@ -1,38 +1,47 @@
 import sys
 from typing import NoReturn
-from pygame.event import get
-from pygame import MOUSEBUTTONDOWN
-from pygame import init, QUIT, quit
-from pygame.display import set_caption, update
+import pygame.event 
+import pygame.display
+import pygame as pg
+from game.constants import DISPLAY, MainThene, TITLE, ICONTITLE, FPS
+
+
 
 # init pygame first !
-init()
 
-from constants import DISPLAY, MainThene, TITLE, ICONTITLE, FPS
-DISPLAY.fill(MainThene.BLACK)
-set_caption(TITLE, ICONTITLE)
+
 from pygame.time import Clock
-from spriteloader import MySprite
-MySprite.surface = DISPLAY
+from game.spriteloader import MySprite
 
-sprite = MySprite()
+
+def spawn_sprite():
+    MySprite.surface = DISPLAY
+    return MySprite()
+
+
+def safe_init():
+    pg.init()
+    DISPLAY.fill(MainThene.BLACK)
+    pygame.display.set_caption(TITLE, ICONTITLE)
+
 
 def safe_quit() -> NoReturn:
     quit()
     sys.exit()
 
-# Game loop
-while True:
-    # code
-    # Read event queue
-    for event in get():
-        if event.type == QUIT:
-            safe_quit()
-        if event.type == MOUSEBUTTONDOWN:
-            safe_quit()
-    MySprite().draw()
-    update()
-    Clock().tick(FPS)
+def game_loop():
+    # Game loop
+    while True:
+        # code
+        # Read event queue
+        for event in pygame.event.get():
+            if event.type == pg.QUIT:
+                safe_quit()
+            if event.type == pg.MOUSEBUTTONDOWN:
+                safe_quit()
+        MySprite().draw()
+        pygame.display.update()
+        Clock().tick(FPS)
 
 
 
