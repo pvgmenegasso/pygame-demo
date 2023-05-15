@@ -1,10 +1,9 @@
 import sys
 from typing import NoReturn
-import pygame.event 
+import pygame.event
 import pygame.display
 import pygame as pg
 from game.constants import DISPLAY, MainThene, TITLE, ICONTITLE, FPS
-
 
 
 # init pygame first !
@@ -29,6 +28,7 @@ def safe_quit() -> NoReturn:
     quit()
     sys.exit()
 
+
 def game_loop():
     # Game loop
     while True:
@@ -44,15 +44,13 @@ def game_loop():
         Clock().tick(FPS)
 
 
-
-
 # Check collision between to rects
 # object1 = pygame.Rect((20, 50), (50, 100))
 # object2 = pygame.Rect((10, 10), (100, 100))
- 
+
 # print(object1.colliderect(object2))
 
 # We can also check for a collision between a Rect and a pair of coordinates.
 # object1 = pygame.Rect((20, 50), (50, 100))
-#  
+#
 # print(object1.collidepoint(50, 75))
