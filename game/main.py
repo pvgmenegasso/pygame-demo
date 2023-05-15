@@ -3,14 +3,14 @@ from typing import NoReturn
 import pygame.event
 import pygame.display
 import pygame as pg
-from game.constants import DISPLAY, MainThene, TITLE, ICONTITLE, FPS
+from constants import DISPLAY, MainThene, TITLE, ICONTITLE, FPS
 
 
 # init pygame first !
 
 
 from pygame.time import Clock
-from game.spriteloader import MySprite
+from spriteloader import MySprite
 
 
 def spawn_sprite():
