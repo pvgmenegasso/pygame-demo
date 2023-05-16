@@ -25,7 +25,7 @@ class Transparency:
     __max_transparency = 255
 
     @classmethod
-    def n_transparent(cls, fraction: int):
+    def n_transparent(cls, fraction: int) -> int:
         result = int(255 / fraction)
         if result < cls.__lowest_transparency or result > cls.__max_transparency:
             raise ValueError(

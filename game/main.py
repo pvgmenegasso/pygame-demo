@@ -13,12 +13,12 @@ from pygame.time import Clock
 from spriteloader import MySprite
 
 
-def spawn_sprite():
+def spawn_sprite() -> MySprite:
     MySprite.surface = DISPLAY
     return MySprite()
 
 
-def safe_init():
+def safe_init() -> None:
     pg.init()
     DISPLAY.fill(MainThene.BLACK)
     pygame.display.set_caption(TITLE, ICONTITLE)
@@ -29,7 +29,7 @@ def safe_quit() -> NoReturn:
     sys.exit()
 
 
-def game_loop():
+def game_loop() -> NoReturn:
     # Game loop
     while True:
         # code
