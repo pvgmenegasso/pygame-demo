@@ -16,7 +16,7 @@ vertical_bounds = Vector2(0, SCREEN_HEIGHT)
 
 
 class SpriteLoader(Sprite):
-    def __init__(self, groups: Any, file_arg: str = "my_image.jpg")-> None:
+    def __init__(self, groups: Any, file_arg: str = "my_image.jpg") -> None:
         super().__init__(groups)
         self.image = load_extended(file_arg)
         self.rect = self.image.get_rect()
@@ -25,7 +25,6 @@ class SpriteLoader(Sprite):
             randint(vertical_bounds.x.__ceil__(), vertical_bounds.y.__ceil__()),
         )
 
-
     def draw(self, surface: Surface) -> None:
         surface.blit(self.image, self.rect)
 
@@ -33,18 +32,15 @@ class SpriteLoader(Sprite):
 class MySprite(SpriteLoader):
     surface: ClassVar[Surface] = DISPLAY
 
-    def __init__(self)-> None:
+    def __init__(self) -> None:
         with open("assets/my_image.jpg") as file:
             super().__init__(file.read())
 
-    def update(self)-> None:
+    def update(self) -> None:
         SpriteLoader.update
 
     @override
-    def draw(
-        self,
-        surface: Surface | None = None
-    )-> Any:
+    def draw(self, surface: Surface | None = None) -> Any:
         if surface is None:
             surface = MySprite.surface
         surface.blit(self.image, self.rect)
