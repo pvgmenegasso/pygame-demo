@@ -1,8 +1,8 @@
 from pytest import fixture
-from game.spriteloader import MySprite
 
 
-class SimpleTest:
+# Classes not prefixed with Test won't be ran
+class TestCase:
     @fixture
     def generate_sprite_fake(self) -> int:
         return 1
