@@ -10,6 +10,13 @@ from constants import DISPLAY, MainThene, TITLE, ICONTITLE, FPS
 
 
 from pygame.time import Clock
+from entities.employee import Employee, Skills, Stats
+from entities.player import Player
+from scenes.scene_0 import Scene
+from simulation.constants import Difficulty
+from simulation.ip import IP
+from simulation.resources import Resources
+from simulation.simulation import Simulation, Speed
 from spriteloader import MySprite
 
 
@@ -32,11 +39,22 @@ def safe_quit() -> NoReturn:
 sprite = spawn_sprite()
 spirtes = pg.sprite.Group(sprite)
 clock = Clock()
+player = Player(
+    name="test_player",
+    employees=[Employee(stats=Stats(), skills=Skills.gen_skills())],
+    resources=Resources(ips=[IP.gen_ip()]),
+)
+
+scene = Scene()
+scene.add_player(player)
+scene.set_speed(speed=Speed.fast)
 
 
 def game_loop() -> NoReturn:
     # Game loop
     while True:
+        scene.update(difficulty=Difficulty(ip_monthly_value_decrease_rate=0.03))
+        scene.print_stats()
         # code
         # Read event queue
         for event in pygame.event.get():
@@ -48,6 +66,8 @@ def game_loop() -> NoReturn:
         pygame.display.update()
         Clock().tick(FPS)
 
+
+game_loop()
 
 # Check collision between to rects
 # object1 = pygame.Rect((20, 50), (50, 100))

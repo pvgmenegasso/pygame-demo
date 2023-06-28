@@ -1,23 +1,12 @@
 from dataclasses import dataclass, field
-from enum import Enum
-from typing import NamedTuple
-from pygame.time import Clock
-
-from game.entities.player import Player
-from game.simulation.constants import Difficulty
-from game.simulation.resources import Resources
-
-
-class Speed(Enum):
-    fastest = 4
-    fast = 2
-    normal = 1
-    stop = 0
+from entities.player import Player
+from simulation.speed import Speed
+from simulation.constants import Difficulty
 
 
 @dataclass
 class Simulation:
-    players: list[Player] = field(default_factory=dict)
+    players: list[Player] = field(default_factory=list)
     speed: Speed = field(default=Speed.normal)
     _steps: int = 0
 

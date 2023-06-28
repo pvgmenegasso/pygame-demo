@@ -1,12 +1,13 @@
 from dataclasses import dataclass
-from game.entities.employee import Employee
-from game.simulation.constants import Difficulty
-from game.simulation.resources import Resources
-from game.simulation.simulation import Speed
+from entities.employee import Employee
+from simulation.speed import Speed
+from simulation.constants import Difficulty
+from simulation.resources import Resources
 
 
 @dataclass
 class Player:
+    name: str
     resources: Resources
     employees: list[Employee]
 

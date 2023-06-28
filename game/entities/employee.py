@@ -1,7 +1,9 @@
+from __future__ import annotations
 from dataclasses import dataclass
-from game.simulation.ip import IP
+from random import randint
+from simulation.ip import IP
 
-from game.simulation.simulation import Speed
+from simulation.speed import Speed
 
 
 @dataclass
@@ -17,6 +19,10 @@ class Skills:
 
     techical_skill: int
     charisma: int
+
+    @classmethod
+    def gen_skills(cls) -> Skills:
+        return Skills(techical_skill=randint(1, 10), charisma=randint(1, 10))
 
 
 @dataclass

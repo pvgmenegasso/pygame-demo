@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from game.simulation.ip import IP
+from simulation.ip import IP
 
 
 @dataclass

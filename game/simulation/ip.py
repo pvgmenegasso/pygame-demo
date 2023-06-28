@@ -2,22 +2,21 @@ from __future__ import annotations
 from dataclasses import dataclass
 from random import random
 from typing import ClassVar
-from game.simulation.constants import Difficulty
+from simulation.constants import Difficulty
 from datetime import date
-from dateutil.relativedelta import relativedelta
 
 
 @dataclass
 class IP:
+    completion_cost: int
     accumulated_costs: ClassVar[int] = 0
     value: float = 0
     release_date: date | None = None
     monthly_value: float = 0
     _completion: int = 0
-    completion_cost: int
 
     @classmethod
-    def gen_ip() -> IP:
+    def gen_ip(cls) -> IP:
         completion_cost: int = round(random() * min(IP.accumulated_costs, 100))
         IP.accumulated_costs += completion_cost
         return IP(completion_cost=completion_cost)
@@ -43,9 +42,6 @@ class IP:
                 self._completion = self.completion_cost
                 return commited_progress - points_to_completion
         return commited_progress
-
-    def time_passed(self, current_date: date) -> relativedelta:
-        return relativedelta(current_date, self.release_date)
 
     def monthly_decrease(self, difficulty: Difficulty) -> float:
         return self.value * difficulty.ip_monthly_value_decrease_rate
