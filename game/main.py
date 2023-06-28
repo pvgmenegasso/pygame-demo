@@ -33,6 +33,7 @@ sprite = spawn_sprite()
 spirtes = pg.sprite.Group(sprite)
 clock = Clock()
 
+
 def game_loop() -> NoReturn:
     # Game loop
     while True:

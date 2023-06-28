@@ -36,7 +36,6 @@ class SpriteLoader(Sprite):
 
 
 class MySprite(SpriteLoader):
-
     def __init__(self) -> None:
         super().__init__(file_arg="assets/my_image.jpg")
 
