@@ -16,7 +16,9 @@ vertical_bounds = Vector2(0, SCREEN_HEIGHT)
 
 
 class SpriteLoader(Sprite):
-    def __init__(self, file_arg: AnyPath):
+    surface: ClassVar[Surface] = DISPLAY
+
+    def __init__(self, file_arg: str = "my_image.jpg") -> None:
         super().__init__()
         self.image = load_extended(file_arg)
         self.rect = self.image.get_rect()
@@ -34,11 +36,9 @@ class SpriteLoader(Sprite):
 
 
 class MySprite(SpriteLoader):
-    surface: ClassVar[Surface] = DISPLAY
 
-    def __init__(self):
-        with open("assets/my_image.jpg") as file:
-            super().__init__(file)
+    def __init__(self) -> None:
+        super().__init__(file_arg="assets/my_image.jpg")
 
     def update(self):
         return super().update

@@ -10,8 +10,8 @@ from pygame.time import Clock
 from os import PathLike
 from typing import IO, final
 
-SCREEN_HEIGHT = 1024
-SCREEN_WIDTH = 1600
+SCREEN_HEIGHT = 800
+SCREEN_WIDTH = 600
 SCREEN_SIZE = Vector2(SCREEN_WIDTH, SCREEN_HEIGHT)
 FPS = 60
 
